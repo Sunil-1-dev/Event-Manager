@@ -1,39 +1,25 @@
-# 📝 Redux Toolkit Todo App
+# Event Management System
 
-A simple and efficient Todo app built with **React** and **Redux Toolkit**. This application allows users to manage tasks with features like adding, editing, and deleting todos, while leveraging Redux Toolkit for global state management.
+A simple and interactive Event Management system built with ReactJS, Redux Toolkit, Tailwind CSS, Material UI, and TypeScript.
+
+---
 
 ## Features
 
-- Add todos
-- Edit existing todos
-- Delete todos
-- Centralized state management with Redux Toolkit
-- Form validation with user-friendly error messages
-- Styled with Tailwind CSS
+- **Add Event:** Create new events with title, description, venue, and date.
+- **View Events:** See a list of all events with details and styling for past events.
+- **Update Event:** Edit existing events with validation to avoid date and venue conflicts.
+- **Delete Event:** Remove events from the list.
+- **Calendar View:** Visualize events in a calendar format.
+
+---
 
 ## Tech Stack
 
-- [React](https://reactjs.org/)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [React Redux](https://react-redux.js.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Vite](https://vitejs.dev/)
+- ReactJS (with Hooks)
+- Redux Toolkit for state management
+- Tailwind CSS for styling
 
-
-## 🧠 State Management
-
-State is managed globally using **Redux Toolkit** via `todoSlice.js`, which handles the following:
-
-- Adding a todo
-- Removing a todo
-- Updating a todo
-
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/sunil-1-dev/redux-todo-app.git
-cd redux-todo-app
+---
 
 
