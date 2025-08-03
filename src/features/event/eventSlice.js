@@ -1,38 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  events: [],
-};
+// Load from localStorage on app start
+const savedEvents = JSON.parse(localStorage.getItem("events")) || [];
 
 const eventSlice = createSlice({
-  name: 'event',
-  initialState,
+  name: "event",
+  initialState: {
+    events: savedEvents,
+  },
   reducers: {
     addEvent: (state, action) => {
-      const newEvent = { ...action.payload, id: uuidv4() };
-      state.events.push(newEvent);
+      state.events.push(action.payload);
+      localStorage.setItem("events", JSON.stringify(state.events));
+    },
+    deleteEvent: (state, action) => {
+      state.events = state.events.filter((e) => e.id !== action.payload);
+      localStorage.setItem("events", JSON.stringify(state.events));
     },
     updateEvent: (state, action) => {
       const index = state.events.findIndex((e) => e.id === action.payload.id);
       if (index !== -1) {
-        const conflict = state.events.find(
-          (e) =>
-            e.id !== action.payload.id &&
-            e.date === action.payload.date &&
-            e.venue.toLowerCase() === action.payload.venue.toLowerCase()
-        );
-        if (conflict) {
-          throw new Error('Venue and date conflict with another event.');
-        }
         state.events[index] = action.payload;
+        localStorage.setItem("events", JSON.stringify(state.events));
       }
-    },
-    deleteEvent: (state, action) => {
-      state.events = state.events.filter((e) => e.id !== action.payload);
     },
   },
 });
 
-export const { addEvent, updateEvent, deleteEvent } = eventSlice.actions;
+export const { addEvent, deleteEvent, updateEvent } = eventSlice.actions;
 export default eventSlice.reducer;
